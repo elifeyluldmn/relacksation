@@ -1,6 +1,7 @@
 {
-  "name": "frontend",
-  "version": "0.1.0",
+  "name": "relacks-frontend",
+  "version": "1.0.0",
+  "description": "RelACKs Sauna & Cold Plunge Rental Frontend",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -17,7 +18,11 @@
     "dotenv": "^16.4.7",
     "mongoose": "^8.13.2",
     "nodemailer": "^6.10.0",
-    "twilio": "^5.5.1"
+    "twilio": "^5.5.1",
+    "@stripe/stripe-js": "^2.4.0",
+    "axios": "^1.6.0",
+    "react-hook-form": "^7.48.2",
+    "react-hot-toast": "^2.4.1"
   },
   "devDependencies": {
     "postcss": "^8",
@@ -25,5 +30,8 @@
     "eslint": "^9",
     "eslint-config-next": "15.1.7",
     "@eslint/eslintrc": "^3"
-  }
+  },
+  "keywords": ["relacks", "sauna", "cold-plunge", "rental", "booking", "nextjs"],
+  "author": "RelACKs Team",
+  "license": "MIT"
 }
