@@ -1,5 +1,5 @@
 export const PRODUCTS = [
-  {slug:"sauna",name:"Portable Sauna",price:500,description:"A private sauna experience in your own space.",icon:"♨"},
+  {slug:"sauna",name:"Portable Sauna",price:500,description:"A cozy propane-heated sauna experience, delivered to your Nantucket space.",icon:"♨"},
   {slug:"cold-plunge",name:"Cold Plunge",price:150,description:"Refresh and reset with an invigorating cold plunge.",icon:"◌"},
   {slug:"fire-pit",name:"Fire Pit",price:100,description:"Make your evening a little warmer.",icon:"✦"}
 ];
