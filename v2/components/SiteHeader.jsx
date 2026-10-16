@@ -1,2 +1,2 @@
 import Link from "next/link";
-export default function SiteHeader(){return <header className="shell nav"><Link href="/" className="brand">relacksation<span style={{color:"#9bae9b"}}>.</span></Link><nav className="navlinks"><Link href="/#rentals">Rentals</Link><Link href="/#how-it-works">How it works</Link><Link className="btn" href="/booking">Book now</Link></nav></header>}
+export default function SiteHeader(){return <header className="shell nav"><Link href="/" className="brand">relacksation<span style={{color:"#9bae9b"}}>.</span></Link><nav className="navlinks"><Link href="/#rentals">Rentals</Link><Link href="/#how-it-works">How it works</Link><Link href="/custom-built-saunas">Custom saunas</Link><Link className="btn" href="/booking">Book now</Link></nav></header>}
