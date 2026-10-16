@@ -24,19 +24,17 @@ export async function POST(req){
  const q=quote(start,end,products);
  const booking={_id:new ObjectId(),startDate:start,endDate:end,products,customer,address,days,total:q.total,subtotal:q.subtotal,discount:q.discount,status:"pending",createdAt:new Date()};
  try {
- const database=await db(),client=database.client||null;
  // Unique inventory keys prevent overlapping requests even if two customers submit simultaneously.
  // A MongoDB transaction ensures a failed multi-day request leaves no partial reservations.
  const {MongoClient}=await import("mongodb");
- // Use a separate connection to start a transaction on the same configured database.
  const mongo=new MongoClient(process.env.MONGODB_URI);await mongo.connect();
  try{
+ const transactionalDb=mongo.db();
+ await transactionalDb.collection("v2_inventory").createIndex({product:1,date:1},{unique:true});
  const session=mongo.startSession();
  try{
  await session.withTransaction(async()=>{
- const transactionalDb=mongo.db(database.databaseName);
  const inv=transactionalDb.collection("v2_inventory");
- await inv.createIndex({product:1,date:1},{unique:true});
  const rows=[];
  for(let i=0;i<days;i++){const d=new Date(Date.parse(start+"T00:00:00Z")+i*86400000).toISOString().slice(0,10);for(const p of products)rows.push({product:p,date:d,bookingId:booking._id});}
  await inv.insertMany(rows,{session,ordered:true});
@@ -48,6 +46,6 @@ export async function POST(req){
  if(e.code===11000||e.code===112)return NextResponse.json({error:"Some equipment is no longer available for those dates. Please choose other dates."},{status:409});
  console.error("Booking failed",e);return NextResponse.json({error:"We couldn't save your request. Please try again."},{status:503});
  }
- sendBookingEmail(booking).catch(e=>console.error("Booking email error",e));
+ await sendBookingEmail(booking).catch(e=>console.error("Booking email error",e));
  return NextResponse.json({bookingId:String(booking._id),status:"pending",total:booking.total},{status:201});
 }
