@@ -21,6 +21,7 @@ export async function POST(req){
  if(days<1||days>365||start<today)return NextResponse.json({error:"Choose valid future rental dates (up to 365 days)."}, {status:400});
  if(!Array.isArray(products)||products.length<1||new Set(products).size!==products.length||products.some(p=>!PRODUCTS.some(x=>x.slug===p)))return NextResponse.json({error:"Select valid rental products."},{status:400});
  if(Object.values(customer).some(v=>!v||v.length>200)||!/^\S+@\S+\.\S+$/.test(customer.email)||Object.values(address).some(v=>!v||v.length>200))return NextResponse.json({error:"Please complete your contact and delivery details."},{status:400});
+ if(address.city.toLowerCase()!=="nantucket"||address.state.toUpperCase()!=="MA"||address.zip!=="02554")return NextResponse.json({error:"Delivery is currently available only on Nantucket, MA (02554)."},{status:400});
  const q=quote(start,end,products);
  const booking={_id:new ObjectId(),startDate:start,endDate:end,products,customer,address,days,total:q.total,subtotal:q.subtotal,discount:q.discount,status:"pending",createdAt:new Date()};
  try {
