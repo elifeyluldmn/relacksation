@@ -18,9 +18,9 @@ function customerHtml(booking) {
 <div style="font-size:27px;font-weight:700;letter-spacing:.4px;color:#f6f2e7;">RelACKsation</div>
 <div style="font-size:11px;letter-spacing:2px;color:#e2d8c7;margin-top:7px;">NANTUCKET WELLNESS RENTALS</div></td></tr>
 <tr><td style="background:#ffffff;padding:34px 30px;">
-<h1 style="font-size:26px;line-height:1.3;color:#183e31;margin:0 0 22px;">Your relaxation is on its way.</h1>
+<h1 style="font-size:26px;line-height:1.3;color:#183e31;margin:0 0 22px;">We've received your booking request</h1>
 <p style="font-size:15px;line-height:1.7;margin:0 0 14px;">Hi ${escapeHtml(booking.customer.name)},</p>
-<p style="font-size:15px;line-height:1.7;margin:0 0 24px;">Thank you for choosing RelACKsation! We've received your booking request and can't wait to bring a little relaxation to you.</p>
+<p style="font-size:15px;line-height:1.7;margin:0 0 24px;">Thank you for choosing RelACKsation. Your booking request has been received and is currently awaiting confirmation.</p>
 <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="background:#f1f4ed;border-radius:8px;">
 <tr><td style="padding:22px;">
 <div style="font-size:16px;font-weight:700;color:#183e31;margin-bottom:9px;">Your booking request</div>
@@ -31,7 +31,7 @@ ${row("Dates", friendlyDate(booking.startDate) + " – " + friendlyDate(booking.
 ${row("Estimated total", money(booking.total))}
 </table></td></tr></table>
 <p style="font-size:15px;line-height:1.7;margin:24px 0;">We'll be in touch to confirm availability, payment, and delivery details. <strong>Your reservation is not confirmed yet.</strong> No payment is due through the website.</p>
-<p style="font-size:15px;line-height:1.7;margin:0;color:#183e31;">See you in relaxation,<br><strong>The RelACKsation Team</strong></p>
+<p style="font-size:15px;line-height:1.7;margin:0;color:#183e31;">Thank you for choosing RelACKsation. We look forward to providing you with a relaxing experience.<br><br>Warm regards,<br><strong>The RelACKsation Team</strong></p>
 </td></tr>
 <tr><td align="center" style="background:#e8e6dd;padding:22px 16px;color:#4b5b50;font-size:12px;line-height:1.8;">Nantucket, Massachusetts<br><a href="mailto:relackswellness@gmail.com" style="color:#183e31;">relackswellness@gmail.com</a></td></tr>
 </table></body></html>`;
